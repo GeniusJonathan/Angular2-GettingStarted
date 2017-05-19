@@ -7,18 +7,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.pageTitle = "Acme Product Management";
+var common_1 = require("@angular/common");
+var forms_1 = require("@angular/forms");
+var star_component_1 = require("./star.component");
+var SharedModule = (function () {
+    function SharedModule() {
     }
-    return AppComponent;
+    return SharedModule;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'pm-app',
-        moduleId: module.id,
-        templateUrl: 'app.component.html'
+SharedModule = __decorate([
+    core_1.NgModule({
+        imports: [common_1.CommonModule],
+        exports: [
+            common_1.CommonModule,
+            forms_1.FormsModule,
+            star_component_1.StarComponent
+        ],
+        declarations: [star_component_1.StarComponent],
     })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], SharedModule);
+exports.SharedModule = SharedModule;
+//# sourceMappingURL=shared.module.js.map

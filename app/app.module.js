@@ -8,16 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
-var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
-var products_list_component_1 = require("./products/products-list.component");
-var product_details_component_1 = require("./products/product-details.component");
-var product_filter_pipe_1 = require("./products/product-filter.pipe");
-var product_guard_service_1 = require("./products/product-guard.service");
-var star_component_1 = require("./shared/star.component");
 var welcome_component_1 = require("./home/welcome.component");
+/* Feature Modules */
+var product_module_1 = require("./products/product.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,28 +23,19 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
             http_1.HttpModule,
             router_1.RouterModule.forRoot([
-                { path: 'products', component: products_list_component_1.ProductListComponent },
-                { path: 'products/:id', canActivate: [product_guard_service_1.ProductDetailGuard], component: product_details_component_1.ProductDetailComponent },
                 { path: 'welcome', component: welcome_component_1.WelcomeComponent },
                 { path: '', redirectTo: 'welcome', pathMatch: 'full' },
                 { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
-            ])
+            ]),
+            product_module_1.ProductModule
         ],
         declarations: [
             app_component_1.AppComponent,
-            welcome_component_1.WelcomeComponent,
-            products_list_component_1.ProductListComponent,
-            product_filter_pipe_1.ProductFilterPipe,
-            star_component_1.StarComponent,
-            product_details_component_1.ProductDetailComponent
+            welcome_component_1.WelcomeComponent
         ],
-        providers: [product_guard_service_1.ProductDetailGuard],
-        bootstrap: [
-            app_component_1.AppComponent
-        ]
+        bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
 exports.AppModule = AppModule;
